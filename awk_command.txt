@@ -1,0 +1,15 @@
+21/tcp open ftp
+22/tcp open ssh
+80/tcp open http
+
+
+cat nmap.txt | grep open
+
+
+cat nmap.txt | grep open | awk -F/ '{print $1}'
+
+cat nmap.txt | grep open | awk -F/ '{print $1}' ORS=' fill this with something  '
+
+
+cat nmap.txt | grep open | awk -F/ '{print $1}' ORS=','
+
