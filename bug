@@ -1,0 +1,12 @@
+subfinder -d target | tee -a domains
+cat domain | httpx | tee -a alive.txt
+cat alive.txt | waybackurls | tee -a urls 
+gf sqli urls >> sqli
+sqlmap -m sqli --dbs --batch
+
+
+
+
+
+
+curl -s "https://crt.sh/?q=%25.att.com&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | httpx -silent -path path -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew Fire
